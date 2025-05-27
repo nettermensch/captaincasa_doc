@@ -1,0 +1,16 @@
+<html>
+<head>
+<style>
+.java {font-family: monospace;background-color: #F0F0F0;}
+.xml {font-family: monospace;background-color: #F0F0F0;}
+</style>
+</head>
+<body>
+<p>The context of this demo is the creation of a dialog using the CaptainCasa framework for the following purpose: <ul><li>Components</li><li>Straight Controls</li><li>Images</li><li>Animated images</li></ul></p>
+<p>You can pass animated images into the client side image processing as well. <br>But: animated images need to indicate the animation by having &#34;_animated&#34; within their file name.<br><br>Background: the user can scale the client sizing using the client configuration popup (icon on the bottom right). This scaling also has impact on the size of images. For scaling images a certain API is used on client side that allows to scale up the size of images with a very good quality. This takes time but is only done once per image.<br>The API for scaling up images does not support animated images - so the client uses a different way of scaling up images, which is from result point of view &#34;rougher&#34;. In order to know when to apply which scaling-algorithm you need to set the filename accordingly.  <br></p>
+<p>This is the XML layout definition:</p>
+<p class="xml">&lt;?xml&nbsp;version=&#34;1.0&#34;&nbsp;encoding=&#34;utf-8&#34;?&gt;<br>&lt;t:layoutdefinition&nbsp;xmlns:t=&#34;http://www.CaptainCasa.com/controllibrary/t&#34;&nbsp;xmlns:tpbc=&#34;http://www.CaptainCasa.com/controllibrary/tpbc&#34;&nbsp;&gt;<br>&lt;t:rowdemobodypane&nbsp;id=&#34;g_1&#34;&nbsp;objectbinding=&#34;#{d.DemoImageAnimated}&#34;&gt;<br>&lt;t:row&nbsp;id=&#34;g_2&#34;&nbsp;&gt;<br>&lt;t:image&nbsp;id=&#34;g_3&#34;&nbsp;image=&#34;/images/pictures/image_animated.gif&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;t:row&nbsp;id=&#34;g_4&#34;&nbsp;&gt;<br>&lt;t:image&nbsp;id=&#34;g_5&#34;&nbsp;height=&#34;100&#34;&nbsp;image=&#34;/images/pictures/image_animated.gif&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;/t:rowdemobodypane&gt;<br>&lt;t:pageaddons&nbsp;id=&#34;g_pa&#34;/&gt;<br>&lt;/t:layoutdefinition&gt;</p>
+<p>This is the Java code:</p>
+<p class="java">package&nbsp;workplace;<br><br>import&nbsp;org.eclnt.workplace.IWorkpageDispatcher;<br><br>public&nbsp;class&nbsp;DemoImageAnimated&nbsp;extends&nbsp;PageBean<br>{<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DemoImageAnimated(IWorkpageDispatcher&nbsp;dispatcher)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(dispatcher);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initRefComponent(&#34;image&#34;);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>}<br></p>
+</body>
+</html>
