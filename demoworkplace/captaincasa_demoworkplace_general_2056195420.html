@@ -1,0 +1,16 @@
+<html>
+<head>
+<style>
+.java {font-family: monospace;background-color: #F0F0F0;}
+.xml {font-family: monospace;background-color: #F0F0F0;}
+</style>
+</head>
+<body>
+<p>The context of this demo is the creation of a dialog using the CaptainCasa framework for the following purpose: <ul><li>General</li><li>General Issues</li><li>Server Memory</li></ul></p>
+<p></p>
+<p>This is the XML layout definition:</p>
+<p class="xml">&lt;?xml&nbsp;version=&#34;1.0&#34;&nbsp;encoding=&#34;utf-8&#34;?&gt;<br>&lt;t:layoutdefinition&nbsp;xmlns:t=&#34;http://www.CaptainCasa.com/controllibrary/t&#34;&nbsp;xmlns:tpbc=&#34;http://www.CaptainCasa.com/controllibrary/tpbc&#34;&nbsp;&gt;<br>&lt;t:rowbodypane&nbsp;id=&#34;g_1&#34;&nbsp;rowdistance=&#34;#{ccstylevalue[&#39;@defaultrowdistance@&#39;]}&#34;&nbsp;&gt;<br>&lt;t:row&nbsp;id=&#34;g_2&#34;&nbsp;&gt;<br>&lt;t:label&nbsp;id=&#34;g_3&#34;&nbsp;text=&#34;Used&nbsp;memory&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;t:formattedfield&nbsp;id=&#34;g_4&#34;&nbsp;enabled=&#34;false&#34;&nbsp;format=&#34;long&#34;&nbsp;value=&#34;#{d.DemoMemory.usedMemory}&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;t:row&nbsp;id=&#34;g_5&#34;&nbsp;&gt;<br>&lt;t:label&nbsp;id=&#34;g_6&#34;&nbsp;text=&#34;Available&nbsp;Memory&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;t:formattedfield&nbsp;id=&#34;g_7&#34;&nbsp;enabled=&#34;false&#34;&nbsp;format=&#34;long&#34;&nbsp;value=&#34;#{d.DemoMemory.availableMemory}&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;t:rowdistance&nbsp;id=&#34;g_8&#34;&nbsp;height=&#34;10&#34;&nbsp;/&gt;<br>&lt;t:row&nbsp;id=&#34;g_9&#34;&nbsp;&gt;<br>&lt;t:coldistance&nbsp;id=&#34;g_10&#34;&nbsp;width=&#34;100&#34;&nbsp;/&gt;<br>&lt;t:button&nbsp;id=&#34;g_11&#34;&nbsp;actionListener=&#34;#{d.DemoMemory.onCollectGarbage}&#34;&nbsp;text=&#34;Collect&nbsp;Garbage&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;/t:rowbodypane&gt;<br>&lt;t:pageaddons&nbsp;id=&#34;g_pa&#34;/&gt;<br>&lt;/t:layoutdefinition&gt;</p>
+<p>This is the Java code:</p>
+<p class="java">package&nbsp;workplace;<br><br>import&nbsp;java.io.Serializable;<br><br>import&nbsp;javax.faces.event.ActionEvent;<br><br>import&nbsp;org.eclnt.editor.annotations.CCGenClass;<br><br>@CCGenClass&nbsp;(expressionBase=&#34;#{d.DemoMemory}&#34;)<br><br>public&nbsp;class&nbsp;DemoMemory&nbsp;implements&nbsp;Serializable<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;long&nbsp;getAvailableMemory()&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Runtime.getRuntime().freeMemory();&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;long&nbsp;getUsedMemory()&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;Runtime.getRuntime().totalMemory()&nbsp;-&nbsp;Runtime.getRuntime().freeMemory();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onCollectGarbage(ActionEvent&nbsp;event)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.gc();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>}<br></p>
+</body>
+</html>

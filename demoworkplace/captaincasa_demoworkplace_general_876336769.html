@@ -1,0 +1,16 @@
+<html>
+<head>
+<style>
+.java {font-family: monospace;background-color: #F0F0F0;}
+.xml {font-family: monospace;background-color: #F0F0F0;}
+</style>
+</head>
+<body>
+<p>The context of this demo is the creation of a dialog using the CaptainCasa framework for the following purpose: <ul><li>General</li><li>Client Integration</li><li>Embedded Browser</li></ul></p>
+<p>The BROWSER component embeds some page within your dialog. Internally an IFRAME is used to embed the page.</p>
+<p>This is the XML layout definition:</p>
+<p class="xml">&lt;?xml&nbsp;version=&#34;1.0&#34;&nbsp;encoding=&#34;utf-8&#34;?&gt;<br>&lt;t:layoutdefinition&nbsp;xmlns:t=&#34;http://www.CaptainCasa.com/controllibrary/t&#34;&nbsp;xmlns:tpbc=&#34;http://www.CaptainCasa.com/controllibrary/tpbc&#34;&nbsp;&gt;<br>&lt;t:rowdemobodypane&nbsp;id=&#34;g_1&#34;&nbsp;objectbinding=&#34;#{d.demoBrowser}&#34;&nbsp;&gt;<br>&lt;t:row&nbsp;id=&#34;g_2&#34;&nbsp;&gt;<br>&lt;t:field&nbsp;id=&#34;g_3&#34;&nbsp;text=&#34;#{d.demoBrowser.url}&#34;&nbsp;width=&#34;100%&#34;&nbsp;/&gt;<br>&lt;t:coldistance&nbsp;id=&#34;g_4&#34;&nbsp;width=&#34;2&#34;&nbsp;/&gt;<br>&lt;t:button&nbsp;id=&#34;g_5&#34;&nbsp;actionListener=&#34;#{d.demoBrowser.onLoad}&#34;&nbsp;text=&#34;Load&nbsp;Page&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;t:row&nbsp;id=&#34;g_6&#34;&nbsp;&gt;<br>&lt;t:browser&nbsp;id=&#34;g_7&#34;&nbsp;height=&#34;100%&#34;&nbsp;url=&#34;#{d.demoBrowser.browserUrl}&#34;&nbsp;width=&#34;100%&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;/t:rowdemobodypane&gt;<br>&lt;t:pageaddons&nbsp;id=&#34;g_pa&#34;/&gt;<br>&lt;/t:layoutdefinition&gt;</p>
+<p>This is the Java code:</p>
+<p class="java">package&nbsp;workplace;<br><br>import&nbsp;javax.faces.event.ActionEvent;<br><br>import&nbsp;org.eclnt.workplace.IWorkpageDispatcher;<br><br>public&nbsp;class&nbsp;DemoBrowser&nbsp;extends&nbsp;PageBean<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DemoBrowser(IWorkpageDispatcher&nbsp;dispatcher)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(dispatcher);<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>//&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;m_url&nbsp;=&nbsp;&#34;/pdf/pdftest1.pdf&#34;;<br>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;m_url&nbsp;=&nbsp;&#34;http://www.captaincasa.com&#34;;<br>//&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;m_url&nbsp;=&nbsp;&#34;http://www.poksundo.com&#34;;<br>&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;m_browserUrl&nbsp;=&nbsp;m_url;<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setUrl(String&nbsp;value)&nbsp;{&nbsp;m_url&nbsp;=&nbsp;value;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getUrl()&nbsp;{&nbsp;return&nbsp;m_url;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;setBrowserUrl(String&nbsp;value)&nbsp;{&nbsp;m_browserUrl&nbsp;=&nbsp;value;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getBrowserUrl()&nbsp;{&nbsp;return&nbsp;m_browserUrl;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onLoad(ActionEvent&nbsp;ae)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m_browserUrl&nbsp;=&nbsp;m_url;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br></p>
+</body>
+</html>
