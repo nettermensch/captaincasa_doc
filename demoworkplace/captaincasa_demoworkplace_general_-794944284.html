@@ -11,6 +11,127 @@
 <p>This is the XML layout definition:</p>
 <p class="xml">&lt;?xml&nbsp;version=&#34;1.0&#34;&nbsp;encoding=&#34;utf-8&#34;?&gt;<br>&lt;t:layoutdefinition&nbsp;xmlns:t=&#34;http://www.CaptainCasa.com/controllibrary/t&#34;&nbsp;xmlns:tpbc=&#34;http://www.CaptainCasa.com/controllibrary/tpbc&#34;&nbsp;&gt;<br>&lt;t:rowdemobodypane&nbsp;id=&#34;g_1&#34;&nbsp;objectbinding=&#34;#{d.DemoMessagePopupStarter}&#34;&nbsp;&gt;<br>&lt;t:row&nbsp;id=&#34;g_2&#34;&nbsp;&gt;<br>&lt;t:button&nbsp;id=&#34;g_3&#34;&nbsp;actionListener=&#34;#{d.DemoMessagePopupStarter.onShowMessageAction}&#34;&nbsp;text=&#34;Show&nbsp;Message&#34;&nbsp;/&gt;<br>&lt;/t:row&gt;<br>&lt;/t:rowdemobodypane&gt;<br>&lt;t:pageaddons&nbsp;id=&#34;g_pa&#34;/&gt;<br>&lt;/t:layoutdefinition&gt;</p>
 <p>This is the Java code:</p>
-<p class="java">package&nbsp;workplace;<br><br>import&nbsp;java.io.Serializable;<br><br>import&nbsp;javax.faces.event.ActionEvent;<br><br>import&nbsp;org.eclnt.editor.annotations.CCGenClass;<br>import&nbsp;org.eclnt.jsfserver.defaultscreens.ModalPopup;<br>import&nbsp;org.eclnt.workplace.IWorkpageDispatcher;<br><br>@CCGenClass&nbsp;(expressionBase=&#34;#{d.DemoMessagePopupStarter}&#34;)<br><br>public&nbsp;class&nbsp;DemoMessagePopupStarter<br>&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;PageBean&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;implements&nbsp;Serializable<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DemoMessagePopupStarter(IWorkpageDispatcher&nbsp;workpageDispatcher)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(workpageDispatcher);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getPageName()&nbsp;{&nbsp;return&nbsp;&#34;/workplace/demomessagepopupstarter.jsp&#34;;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getRootExpressionUsedInPage()&nbsp;{&nbsp;return&nbsp;&#34;#{d.DemoMessagePopupStarter}&#34;;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onShowMessageAction(ActionEvent&nbsp;event)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;DemoMessagePopup&nbsp;dmp&nbsp;=&nbsp;new&nbsp;DemoMessagePopup();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ModalPopup&nbsp;popup&nbsp;=&nbsp;openModalPopup(dmp,&#34;Message&#34;,0,0,new&nbsp;ModalPopup.IModalPopupListener()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;reactOnPopupClosedByUser()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closePopup(dmp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dmp.prepare(new&nbsp;Error(),popup);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popup.setLeftTopReferenceCentered();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>}<br></p>
+<p class="java">package&nbsp;workplace;<br><br>import&nbsp;java.io.Serializable;<br><br>import&nbsp;javax.faces.event.ActionEvent;<br><br>import&nbsp;org.eclnt.editor.annotations.CCGenClass;<br>import&nbsp;org.eclnt.jsfserver.defaultscreens.ModalPopup;<br>import&nbsp;org.eclnt.workplace.IWorkpageDispatcher;<br><br>@CCGenClass&nbsp;(expressionBase=&#34;#{d.DemoMessagePopupStarter}&#34;)<br><br>public&nbsp;class&nbsp;DemoMessagePopupStarter<br>&nbsp;&nbsp;&nbsp;&nbsp;extends&nbsp;WorkpageDispatchedPageBean&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;implements&nbsp;Serializable<br>{<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;DemoMessagePopupStarter(IWorkpageDispatcher&nbsp;workpageDispatcher)<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(workpageDispatcher);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getPageName()&nbsp;{&nbsp;return&nbsp;&#34;/workplace/demomessagepopupstarter.jsp&#34;;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;String&nbsp;getRootExpressionUsedInPage()&nbsp;{&nbsp;return&nbsp;&#34;#{d.DemoMessagePopupStarter}&#34;;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;onShowMessageAction(ActionEvent&nbsp;event)&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;final&nbsp;DemoMessagePopup&nbsp;dmp&nbsp;=&nbsp;new&nbsp;DemoMessagePopup();<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ModalPopup&nbsp;popup&nbsp;=&nbsp;openModalPopup(dmp,&#34;Message&#34;,0,0,new&nbsp;ModalPopup.IModalPopupListener()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;void&nbsp;reactOnPopupClosedByUser()<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;closePopup(dmp);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dmp.prepare(new&nbsp;Error(),popup);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;popup.setLeftTopReferenceCentered();<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>}<br></p>
+<p>There are additional pages referenced by this example:</p><h4>Additional page 1</h4><p>This is the XML layout definition:</p>
+<p class="xml"><?xml version="1.0" encoding="utf-8"?>
+<t:layoutdefinition xmlns:t="http://www.CaptainCasa.com/controllibrary/t" xmlns:tpbc="http://www.CaptainCasa.com/controllibrary/tpbc" >
+<t:rowbodypane id="g_1" rowdistance="20" sizetocontentinpopup="true" >
+<t:row id="g_2" >
+<t:label id="g_3" text="Message summary" width="150" />
+<t:label id="g_19" font="weight:bold" text="#{d.DemoMessagePopup.shortText}" width="100%" />
+</t:row>
+<t:row id="g_4" >
+<t:foldablepane id="g_5" actionListener="#{d.DemoMessagePopup.onFoldableAction}" flush="true" height="100%;300" opened="#{d.DemoMessagePopup.foldabledOpened}" stylevariant="ccexposed" text="Detail stack trace" width="100%;300" >
+<t:row id="g_24" >
+<t:scrollpane id="g_25" height="100%" width="100%" >
+<t:row id="g_26" >
+<t:textpane id="g_7" text="#{d.DemoMessagePopup.longText}" width="100%" />
+</t:row>
+</t:scrollpane>
+</t:row>
+</t:foldablepane>
+</t:row>
+<t:row id="g_21" >
+<t:label id="g_22" align="center" font="weight:normal" stylevariant="ccsmall" text="Open the Stack Trace area by clicking onto the text or its icon on the right..." width="100%" />
+</t:row>
+</t:rowbodypane>
+<t:rowfooter id="g_9" coldistance="#{ccstylevalue[&#39;@defaultcoldistance@&#39;]}" >
+<t:coldistance id="g_12" width="100%" />
+<t:button id="g_10" actionListener="#{d.DemoMessagePopup.onMaximizeAction}" text="Maximize" width="100+" />
+<t:button id="g_14" actionListener="#{d.DemoMessagePopup.onNormalSizeAction}" text="Normal size" width="100+" />
+</t:rowfooter>
+<t:pageaddons id="g_pa"/>
+</t:layoutdefinition></p>
+<p>This is the Java code:</p>
+<p class="java">package workplace;
+
+import java.io.Serializable;
+
+import javax.faces.event.ActionEvent;
+
+import org.eclnt.editor.annotations.CCGenClass;
+import org.eclnt.jsfserver.defaultscreens.ModalPopup;
+import org.eclnt.jsfserver.pagebean.PageBean;
+import org.eclnt.util.valuemgmt.ValueManager;
+
+@CCGenClass (expressionBase="#{d.DemoMessagePopup}")
+
+public class DemoMessagePopup
+    extends PageBean 
+    implements Serializable
+{
+    // ------------------------------------------------------------------------
+    // inner classes
+    // ------------------------------------------------------------------------
+    
+    // ------------------------------------------------------------------------
+    // members
+    // ------------------------------------------------------------------------
+    
+    boolean m_foldabledOpened = false;
+    String m_longText;
+    String m_shortText;
+    ModalPopup m_popup;
+    
+    // ------------------------------------------------------------------------
+    // constructors & initialization
+    // ------------------------------------------------------------------------
+
+    public DemoMessagePopup()
+    {
+    }
+
+    public String getPageName() { return "/workplace/demomessagepopup.jsp"; }
+    public String getRootExpressionUsedInPage() { return "#{d.DemoMessagePopup}"; }
+
+    // ------------------------------------------------------------------------
+    // public usage
+    // ------------------------------------------------------------------------
+
+    public boolean getFoldabledOpened() { return m_foldabledOpened; }
+    public void setFoldabledOpened(boolean value) { this.m_foldabledOpened = value; }
+
+    public String getLongText() { return m_longText; }
+    public void setLongText(String value) { this.m_longText = value; }
+
+    public String getShortText() { return m_shortText; }
+    public void setShortText(String value) { this.m_shortText = value; }
+
+    public void prepare(Throwable t, ModalPopup popup)
+    {
+        m_shortText = t.toString();
+        m_longText = ValueManager.getStackstraceString(t);
+        m_foldabledOpened = false;
+        m_popup = popup;
+    }
+
+    public void onFoldableAction(ActionEvent event) 
+    {
+//        if (m_foldabledOpened == true)
+//        {
+//            m_popup.setHeight(500);
+//        }
+//        else
+//        {
+//            m_popup.setHeight(150);
+//        }
+        m_popup.setWidthHeightToDesiredSize();
+    }
+
+    public void onMaximizeAction(javax.faces.event.ActionEvent event) 
+    {
+        m_popup.maximize(true);
+    }
+
+    public void onNormalSizeAction(javax.faces.event.ActionEvent event) 
+    {
+        m_popup.maximize(false);
+    }
+
+    // ------------------------------------------------------------------------
+    // private usage
+    // ------------------------------------------------------------------------
+}
+</p>
 </body>
 </html>
